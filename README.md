@@ -10,7 +10,9 @@
 6) Результати в директорії - scripts/results
 
 API має наступний вигляд 
-version can be v1 - postgres and v2 - cassandra
+
+(version can be v1 - postgres and v2 - cassandra)
+
 q1 - http://host:port/api/version/review_by_customer/<id>/
 q2 - http://host:port/api/version/review_by_product/<id>/
 q3 - http://host:port/api/version/review_by_product/<id>/<star_rating>
