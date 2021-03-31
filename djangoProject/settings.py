@@ -85,7 +85,7 @@ DATABASES = {
         'NAME': 'bigdata_rdbms',
         'USER': 'postgres',
         'PASSWORD': 'postgres',
-        'HOST': 'localhost',
+        'HOST': '35.232.113.81',
         'PORT': '5432',
     },
     'cassandra': {
