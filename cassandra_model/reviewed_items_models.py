@@ -29,7 +29,7 @@ class ReviewedItems:
         with connections['cassandra'].cursor() as cursor:
             res = cursor.execute(
                 """
-                SELECT product_id, product_parent, product_title, product_category FROM reviewed_items WHERE 
+                SELECT product_id, product_title, product_category FROM reviewed_items WHERE 
                 review_date  >= %s and review_date <= %s ALLOW FILTERING;
                 """, [first_date, second_date])
 

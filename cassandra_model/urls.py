@@ -4,9 +4,9 @@ from cassandra_model.views import *
 
 app_name = 'cassandra'
 urlpatterns = [
-    path('review_by_product/<str:product_id>', ReviewByProductView.as_view()),
-    path('review_by_customer/<int:customer_id>', ReviewByCustomerView.as_view()),
-    path('review_by_product/<str:product_id>/<int:star_rating>',
+    path('review_by_product/<str:product_id>/', ReviewByProductView.as_view()),
+    path('review_by_customer/<int:customer_id>/', ReviewByCustomerView.as_view()),
+    path('review_by_product/<str:product_id>/<int:star_rating>/',
          ReviewByProductStarRatingView.as_view()),
     path('most_reviewed_items/<str:first_date>/<str:second_date>/<int:number_of_products>/',
          MostReviewedItemsView.as_view()),

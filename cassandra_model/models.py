@@ -18,7 +18,7 @@ class ReviewByProduct:
             res = cursor.execute(
             """
             SELECT * FROM review_by_product WHERE 
-            product_id = %s AND star_rating = %s
+            product_id = %s AND star_rating = %s ALLOW FILTERING
             """, [product_id, star_rating])
         return res
 

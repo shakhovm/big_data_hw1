@@ -69,7 +69,7 @@ class Review(models.Model):
         with connection.cursor() as cursor:
             cursor.execute("""
             SELECT
-                  reviews.customer_id, count(reviews.customer_id) as rn
+                  reviews.customer_id
             FROM reviews
             WHERE
                 (date(%s) <= reviews.review_date)
@@ -77,7 +77,7 @@ class Review(models.Model):
                 (date(%s) > reviews.review_date)
                     AND
                 (star_rating = 1 OR star_rating = 2)
-            GROUP BY reviews.customer_id ORDER BY rn DESC LIMIT %s;
+            GROUP BY reviews.customer_id ORDER BY count(reviews.customer_id) DESC LIMIT %s;
             """, [first_date, second_date, number_of_haters])
             row = dictfetchall(cursor)
         return row
@@ -87,7 +87,7 @@ class Review(models.Model):
         with connection.cursor() as cursor:
             cursor.execute("""
             SELECT
-                  reviews.customer_id, count(reviews.customer_id) as rn
+                  reviews.customer_id
             FROM reviews
             WHERE
                 (date(%s) <= reviews.review_date)
@@ -95,7 +95,7 @@ class Review(models.Model):
                 (date(%s) > reviews.review_date)
                     AND
                 (star_rating = 4 OR star_rating = 5)
-            GROUP BY reviews.customer_id ORDER BY rn DESC LIMIT %s;
+            GROUP BY reviews.customer_id ORDER BY count(reviews.customer_id) DESC LIMIT %s;
             """, [first_date, second_date, number_of_haters])
             row = dictfetchall(cursor)
         return row
