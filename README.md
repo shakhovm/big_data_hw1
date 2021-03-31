@@ -1,4 +1,6 @@
 # BIG Data Homework 1
+
+
 1) Діаграми знаходяться в директорії diagrams
 
 
