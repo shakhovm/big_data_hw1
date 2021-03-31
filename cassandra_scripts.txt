@@ -1,0 +1,63 @@
+
+CREATE  KEYSPACE bigdata_cassandra WITH REPLICATION = {'class': 'SimpleStrategy','replication_factor': 3}
+use bigdata_cassandra;
+
+CREATE TABLE review_by_product (
+    product_id text,
+    review_id text,
+    review_headline text,
+    helpful_votes int,
+    star_rating tinyint,
+    review_body text,
+    review_date date,
+    PRIMARY KEY ( (product_id), review_id )
+);
+
+
+CREATE TABLE review_by_customer (
+    customer_id int,
+    review_id text,
+    review_headline text,
+    helpful_votes int,
+    star_rating tinyint,
+    review_body text,
+    review_date date,
+    PRIMARY KEY ( (customer_id), review_id )
+);
+
+
+CREATE TABLE reviewed_items (
+    product_id text,
+    review_id text,
+    review_date date,
+    star_rating int,
+    verified_purchase ascii,
+    product_title text,
+    product_category text,
+    PRIMARY KEY ( (product_id, review_id), review_date, star_rating )
+) WITH CLUSTERING ORDER BY (review_date ASC );
+
+CREATE TABLE customer_review (
+    customer_id int,
+    review_id text,
+    review_date date,
+    star_rating tinyint,
+    verified_purchase ascii,
+
+    PRIMARY KEY ( (customer_id, review_id), review_date, star_rating )
+
+) WITH CLUSTERING ORDER BY (review_date ASC );
+
+CREATE TABLE hater_reviews (
+  review_id text,
+  customer_id int,
+  review_date date,
+  PRIMARY KEY ( (review_id, customer_id), review_date )
+);
+
+CREATE TABLE backer_reviews (
+  review_id text,
+  customer_id int,
+  review_date date,
+  PRIMARY KEY ( (review_id, customer_id), review_date )
+);
