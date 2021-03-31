@@ -91,14 +91,10 @@ DATABASES = {
     'cassandra': {
         'ENGINE': 'django_cassandra_engine',
         'NAME': 'bigdata_cassandra',
-        # 'USER': 'cassandra',
-        'USER': 'cass',
-        # 'PASSWORD': 'LzzzAv8F93Qq',
-        'PASSWORD': 'cass',
+        'USER': 'cassandra',
+        'PASSWORD': 'LzzzAv8F93Qq',
         # 'TEST_NAME': 'test_db',
-        # 'HOST': '35.232.113.81',
-
-        'HOST': 'localhost',
+        'HOST': '35.232.113.81',
         'PORT': '9042',
         'OPTIONS': {
             'replication': {

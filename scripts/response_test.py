@@ -39,6 +39,6 @@ if __name__ == "__main__":
     for paramater, query in zip(params, queries):
         cassandra_url = make_url(host, api2, query, paramater)
         print(cassandra_url)
-        save_response_to_file(cassandra_url, cassandra_url + ".json")
+        save_response_to_file(cassandra_url, "responses/" + cassandra_url + ".json")
         db_url = make_url(host, api1, query, paramater)
-        save_response_to_file(db_url, db_url + ".json")
+        save_response_to_file(db_url, "responses/" + db_url + ".json")
